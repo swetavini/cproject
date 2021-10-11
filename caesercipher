@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+#include <ctype.h>
+#define MAX 200
+int main()
+{
+     char instr[MAX], crypt[MAX], decrypt[MAX], aa;
+     int shift = 0, k;/* this is the Caesar encryption key */
+    
+     
+     printf(" Enter your string : ");
+     scanf("%s",instr);
+     
+     
+     printf(" Enter key : ");
+     scanf("%d",&shift);
+    
+     printf( "\noriginal string is : [%s] ",instr);
+     k=0;
+     while(instr[k] !='\0')
+      {
+               aa = toupper(instr[k]);
+             if(aa != ' ') aa += shift; 
+             {
+                if(aa > 'z') aa -=26;
+                {
+                   crypt[k] = aa;
+                   k++;
+                }
+             }
+      }
+               crypt[k]='\0';
+                printf("\nEncrypted string is : [%s] ",crypt);
+                k=0;
+            while(crypt[k] !='\0')
+            {
+                aa = crypt[k];
+              if(aa != ' ') aa -= shift;
+              {
+                 if(aa < 'A' && aa !=' ') aa +=26;
+                 {
+                          decrypt[k] = aa;
+                          k++;
+                 }
+              }
+            }
+               decrypt[k]='\0';
+               printf("\n Decrypted string is : [%s] ",decrypt);
+               return 0;
+}
